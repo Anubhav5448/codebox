@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter,Pixelify_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Pixelify_Sans, Jersey_10 } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Provider } from "./provider";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const GameFont = Pixelify_Sans({
-  subsets:['latin'],
-  variable:'--font-game'
+const GameFont = Jersey_10({
+  subsets: ["latin"],
+  variable: "--font-game",
+  weight:['400'],
 });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,9 +34,28 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable,GameFont.variable)}
+      suppressHydrationWarning
+      className={cn(
+        "h-full",
+        "dark",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        inter.variable,
+        GameFont.variable,
+      )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full ṭflex flex-col">
+        <Provider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </Provider>
+      </body>
     </html>
   );
 }
