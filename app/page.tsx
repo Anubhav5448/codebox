@@ -8,8 +8,7 @@ import Header from "./_components/Header";
 export default function Home() {
   return (
    <div className="flex flex-col items-center">
-    {/* header / navbar */}
-    <Header/>
+   
     {/* hero section */}
 <Hero/>
    </div>
