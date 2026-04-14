@@ -5,7 +5,7 @@ import React from "react";
 const UserStatus = () => {
   const { user } = useUser();
   return (
-    <div className="p-4 border-4 rounded-2xl ">
+    <div className="p-4  border-4 rounded-2xl ">
       <div className="flex gap-3 items-center">
         <Image
           src="/alex_walk.gif"
